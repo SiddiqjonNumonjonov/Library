@@ -14,11 +14,11 @@ public class TableRepository {
                 "name varchar(25) not null," +
                 "surname varchar(25) not null," +
                 "login varchar(25) unique not null," +
-                "password varchar(25) not null," +
+                "password varchar(50) not null," +
                 "role varchar(25) not null," +
                 "status varchar(25) not null," +
                 "created_at timestamp not null," +
-                "updated_at timestamp not null" +
+                "updated_at timestamp " +
                 ")";
            create(sql);
     }
