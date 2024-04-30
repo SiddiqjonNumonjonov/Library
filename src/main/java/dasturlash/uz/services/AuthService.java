@@ -1,13 +1,21 @@
 package dasturlash.uz.services;
 
+import dasturlash.uz.controllers.AdminController;
+import dasturlash.uz.controllers.StudentController;
+import dasturlash.uz.controllers.StuffController;
 import dasturlash.uz.dtos.ProfileDTO;
 import dasturlash.uz.enums.ProfileRole;
 import dasturlash.uz.enums.ProfileStatus;
 import dasturlash.uz.repositories.ProfileRepository;
 import dasturlash.uz.utils.MD5Util;
 
+import java.time.LocalDateTime;
+
 public class AuthService {
   private   ProfileRepository profileRepository = new ProfileRepository();
+  private StudentController studentController = new StudentController();
+  private AdminController adminController = new AdminController();
+  private StuffController stuffController = new StuffController();
     public void login(String login,String password) {
        ProfileDTO profileDTO =  profileRepository.getByLogin(login);
 
@@ -26,9 +34,25 @@ public class AuthService {
        }
 
        if(profileDTO.getRole().equals(ProfileRole.ADMIN)) {
-           System.out.println("Admin menu ");
+          adminController.start();
+       } else if (profileDTO.getRole().equals(ProfileRole.STUDENT)) {
+           studentController.start();
+       }else {
+           stuffController.start();
        }
 
     }
 
+    public Boolean registration(ProfileDTO profileDTO) {
+        ProfileDTO profile = profileRepository.getByLogin(profileDTO.getLogin());
+
+        if(profile != null) {
+            return false;
+        }
+        profileDTO.setCreatedAt(LocalDateTime.now());
+        profileDTO.setUpdatedAt(null);
+        profileDTO.setRole(ProfileRole.STUDENT);
+        profileDTO.setStatus(ProfileStatus.ACTIVE);
+        return profileRepository.add(profileDTO);
+    }
 }
