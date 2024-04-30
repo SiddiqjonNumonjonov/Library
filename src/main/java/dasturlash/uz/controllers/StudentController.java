@@ -1,5 +1,7 @@
 package dasturlash.uz.controllers;
 
+import dasturlash.uz.containers.ComponentContainer;
+
 import java.util.Scanner;
 
 public class StudentController {
@@ -40,7 +42,6 @@ public class StudentController {
         System.out.println("0=>exit");
     }
     public int getAction() {
-        Scanner scanner = new Scanner(System.in);
-        return scanner.nextInt();
+        return ComponentContainer.scannerForDigit.nextInt();
     }
 }

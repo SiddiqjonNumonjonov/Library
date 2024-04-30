@@ -20,7 +20,15 @@ public class TableRepository {
                 "created_at timestamp not null," +
                 "updated_at timestamp " +
                 ")";
+
+         String sqlForCategory = "create table if not exists category(" +
+                 "id serial primary key," +
+                 "name varchar(25) unique not null," +
+                 "visible boolean not null," +
+                 "created_at timeStamp not null" +
+                 ")";
            create(sql);
+           create(sqlForCategory);
     }
 
     public void create(String sql) {

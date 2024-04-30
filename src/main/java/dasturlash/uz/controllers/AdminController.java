@@ -1,5 +1,7 @@
 package dasturlash.uz.controllers;
 
+import dasturlash.uz.containers.ComponentContainer;
+
 import java.util.Scanner;
 
 public class AdminController {
@@ -13,6 +15,7 @@ public class AdminController {
                 case 1:
                     break;
                 case 2:
+                    ComponentContainer.categoryController.start();
                     break;
                 case 3:
                     break;
@@ -36,7 +39,6 @@ public class AdminController {
         System.out.println("enter action : ");
     }
     public int getAction() {
-        Scanner scanner = new Scanner(System.in);
-        return scanner.nextInt();
+        return ComponentContainer.scannerForDigit.nextInt();
     }
 }

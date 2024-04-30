@@ -1,7 +1,6 @@
 package dasturlash.uz.controllers;
 
-import java.util.Scanner;
-
+import dasturlash.uz.containers.ComponentContainer;
 public class StuffController {
     public void start() {
         boolean loop = true;
@@ -30,7 +29,6 @@ public class StuffController {
         System.out.println("enter action : ");
     }
     public int getAction() {
-        Scanner scanner = new Scanner(System.in);
-        return scanner.nextInt();
+        return ComponentContainer.scannerForDigit.nextInt();
     }
 }
