@@ -1,5 +1,6 @@
 package dasturlash.uz.services;
 
+import dasturlash.uz.containers.ComponentContainer;
 import dasturlash.uz.controllers.AdminController;
 import dasturlash.uz.controllers.StudentController;
 import dasturlash.uz.controllers.StuffController;
@@ -53,23 +54,10 @@ public class AuthService {
         profileDTO.setUpdatedAt(null);
         profileDTO.setRole(ProfileRole.STUDENT);
         profileDTO.setStatus(ProfileStatus.ACTIVE);
-        if(isValid(profileDTO)) {
+        if(ComponentContainer.profileValidationUtil.isValid(profileDTO)) {
          return profileRepository.add(profileDTO);
         }
         return false;
     }
-    public Boolean isValid(ProfileDTO profileDTO) {
-        if(profileDTO.getName() == null || profileDTO.getName().isBlank() || profileDTO.getName().trim().length() < 3) {
-            return false;
-        }
 
-        if(profileDTO.getSurname() == null || profileDTO.getSurname().isBlank() || profileDTO.getSurname().trim().length() < 3) {
-            return false;
-        }
-
-        if(profileDTO.getPassword() == null || profileDTO.getPassword().isBlank() || profileDTO.getPassword().trim().length() < 5) {
-            return false;
-        }
-        return profileDTO.getLogin() != null && !profileDTO.getLogin().isBlank() && profileDTO.getLogin().trim().length() >= 3;
-    }
 }

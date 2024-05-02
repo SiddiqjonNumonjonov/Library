@@ -19,8 +19,10 @@ public class AdminController {
                     ComponentContainer.categoryController.start();
                     break;
                 case 3:
+                    ComponentContainer.studentProfileController.start();
                     break;
                 case 4:
+                    ComponentContainer.profileController.start();
                     break;
                 case 0:
                     loop = false;
