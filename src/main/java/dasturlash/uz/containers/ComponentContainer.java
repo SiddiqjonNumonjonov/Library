@@ -1,10 +1,13 @@
 package dasturlash.uz.containers;
 
+import dasturlash.uz.controllers.BookController;
 import dasturlash.uz.controllers.CategoryController;
 import dasturlash.uz.controllers.MainController;
+import dasturlash.uz.repositories.BookRepository;
 import dasturlash.uz.repositories.CategoryRepository;
 import dasturlash.uz.repositories.TableRepository;
 import dasturlash.uz.services.AuthService;
+import dasturlash.uz.services.BookService;
 import dasturlash.uz.services.CategoryService;
 import dasturlash.uz.services.InitService;
 
@@ -20,5 +23,9 @@ public class ComponentContainer {
     public static CategoryController categoryController = new CategoryController();
     public static CategoryService categoryService = new CategoryService();
     public static CategoryRepository categoryRepository = new CategoryRepository();
+    public static BookController bookController = new BookController();
+    public static BookService bookService = new BookService();
+    public static BookRepository bookRepository = new BookRepository();
+
 
 }

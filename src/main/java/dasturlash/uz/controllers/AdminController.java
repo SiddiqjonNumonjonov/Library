@@ -13,6 +13,7 @@ public class AdminController {
 
             switch (action) {
                 case 1:
+                    ComponentContainer.bookController.start();
                     break;
                 case 2:
                     ComponentContainer.categoryController.start();

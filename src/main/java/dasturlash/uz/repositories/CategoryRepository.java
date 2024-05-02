@@ -79,4 +79,24 @@ public class CategoryRepository {
             throw new RuntimeException(e);
         }
     }
+    public CategoryDTO getById(int id) {
+        Connection connection = ConnectionUtil.getConnection();
+        String sql = "select * from category where id = ?";
+        try {
+            PreparedStatement preparedStatement =  connection.prepareStatement(sql);
+            preparedStatement.setInt(1,id);
+            ResultSet resultSet =  preparedStatement.executeQuery();
+            if(resultSet.next()) {
+                CategoryDTO categoryDTO = new CategoryDTO();
+                categoryDTO.setId(resultSet.getInt("id"));
+                categoryDTO.setName(resultSet.getString("name"));
+                categoryDTO.setVisible(resultSet.getBoolean("visible"));
+                categoryDTO.setCreatedAt(resultSet.getTimestamp("created_at").toLocalDateTime());
+                return categoryDTO;
+            }
+            return null;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

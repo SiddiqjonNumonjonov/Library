@@ -27,8 +27,22 @@ public class TableRepository {
                  "visible boolean not null," +
                  "created_at timeStamp not null" +
                  ")";
+
+        String sqlForBook = "create table if not exists book(" +
+                "id serial primary key," +
+                "title varchar(25) not null," +
+                "author varchar(25)," +
+                "category_id int not null," +
+                "visible boolean not null," +
+                "created_at timeStamp not null," +
+                "published_at date not null," +
+                "available_days int not null," +
+                " constraint fk_category_id foreign key(category_id) references category(id)" +
+                ")";
+
            create(sql);
            create(sqlForCategory);
+           create(sqlForBook);
     }
 
     public void create(String sql) {
