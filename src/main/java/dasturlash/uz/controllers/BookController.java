@@ -51,7 +51,7 @@ public class BookController {
        }
     }
 
-    private void search() {
+    public void search() {
         System.out.println("enter query : ");
         String query = ComponentContainer.scannerForStr.nextLine();
 
@@ -65,7 +65,7 @@ public class BookController {
        }
     }
 
-    private void bookLists() {
+    public void bookLists() {
        var allBooks =  ComponentContainer.bookService.bookLists();
 
        if(allBooks == null) {

@@ -9,8 +9,10 @@ public class StuffController {
             int command = getAction();
             switch (command) {
                 case 1:
+                    ComponentContainer.bookController.start();
                     break;
                 case 2:
+                    ComponentContainer.studentProfileController.start();
                     break;
                 case 0:
                     break;

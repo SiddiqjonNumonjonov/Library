@@ -2,6 +2,7 @@ package dasturlash.uz.services;
 
 import dasturlash.uz.containers.ComponentContainer;
 import dasturlash.uz.dtos.ProfileDTO;
+import dasturlash.uz.enums.ProfileRole;
 import dasturlash.uz.enums.ProfileStatus;
 import dasturlash.uz.utils.ProfileValidationUtil;
 
@@ -26,13 +27,7 @@ public class ProfileService {
        return ComponentContainer.profileRepository.add(profileDTO);
     }
 
-    public List<ProfileDTO> getAllProfiles() {
-        var allProfiles = ComponentContainer.profileRepository.allProfiles();
-        if(allProfiles.isEmpty()) {
-            return null;
-        }
-        return allProfiles;
-    }
+
 
     public List<ProfileDTO> search(String query) {
         var searchedProfiles = ComponentContainer.profileRepository.search(query);
@@ -53,5 +48,21 @@ public class ProfileService {
            return ComponentContainer.profileRepository.changeStatus(id,ProfileStatus.ACTIVE);
         }
         return false;
+    }
+    public List<ProfileDTO> getAllStudents() {
+        var profiles = ComponentContainer.profileRepository.getAllStudents();
+
+        if(profiles.isEmpty()) {
+            return null;
+        }
+        return profiles;
+    }
+
+    public List<ProfileDTO> getAllProfiles() {
+        var profiles = ComponentContainer.profileRepository.getAllProfiles();
+        if(profiles.isEmpty()) {
+            return null;
+        }
+        return profiles;
     }
 }

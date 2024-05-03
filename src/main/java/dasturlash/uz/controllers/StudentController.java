@@ -13,8 +13,10 @@ public class StudentController {
 
                 switch (action) {
                     case 1:
+                        ComponentContainer.bookController.bookLists();
                         break;
                     case 2:
+                        ComponentContainer.bookController.search();
                         break;
                     case 3:
                         break;
