@@ -1,6 +1,7 @@
 package dasturlash.uz.controllers;
 
 import dasturlash.uz.containers.ComponentContainer;
+import dasturlash.uz.dtos.StudentBookDTO;
 
 import java.util.Scanner;
 
@@ -19,10 +20,12 @@ public class StudentController {
                         ComponentContainer.bookController.search();
                         break;
                     case 3:
+                        takeBook();
                         break;
                     case 4:
                         break;
                     case 5:
+                        booksOnHand();
                         break;
                     case 0:
                         loop = false;
@@ -33,6 +36,35 @@ public class StudentController {
 
             }
         }
+
+    private void booksOnHand() {
+        System.out.println("enter id : ");
+        int id = ComponentContainer.scannerForDigit.nextInt();
+
+       var booksOnHand =  ComponentContainer.studentBookService.booksOnHand(id);
+       if(booksOnHand == null) {
+           System.out.println("no book");
+           return;
+       }
+
+       for (StudentBookDTO studentBookDTO : booksOnHand) {
+           System.out.println("bookId : "+studentBookDTO.getBookDTO().getId()+" "+"studentId :"+studentBookDTO.getProfileDTO().getName()+" "+
+                   " bookTitle :  "+studentBookDTO.getBookDTO().getTitle());
+       }
+    }
+
+    private void takeBook() {
+        System.out.println("enter id : ");
+        int id = ComponentContainer.scannerForDigit.nextInt();
+
+       var isTaken =  ComponentContainer.studentBookService.takeBook(id);
+       if(isTaken) {
+           System.out.println("book taken successfully");
+           return;
+       }
+        System.err.println("something went wrong .....");
+    }
+
     public void printMenu() {
         System.out.println("***Student Menu***");
         System.out.println("1=>Book lists");

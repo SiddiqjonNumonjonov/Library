@@ -1,10 +1,8 @@
 package dasturlash.uz.containers;
 
 import dasturlash.uz.controllers.*;
-import dasturlash.uz.repositories.BookRepository;
-import dasturlash.uz.repositories.CategoryRepository;
-import dasturlash.uz.repositories.ProfileRepository;
-import dasturlash.uz.repositories.TableRepository;
+import dasturlash.uz.dtos.ProfileDTO;
+import dasturlash.uz.repositories.*;
 import dasturlash.uz.services.*;
 import dasturlash.uz.utils.ProfileValidationUtil;
 
@@ -28,6 +26,9 @@ public class ComponentContainer {
     public static ProfileValidationUtil profileValidationUtil = new ProfileValidationUtil();
     public static ProfileRepository profileRepository = new ProfileRepository();
     public static StudentProfileController studentProfileController = new StudentProfileController();
+    public static StudentBookRepository studentBookRepository = new StudentBookRepository();
+    public static StudentBookService studentBookService = new StudentBookService();
+    public static ProfileDTO profileDTO;
 
 
 }

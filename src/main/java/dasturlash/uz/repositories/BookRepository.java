@@ -115,4 +115,28 @@ public class BookRepository {
             throw new RuntimeException(e);
         }
     }
+    public BookDTO getById(int id) {
+        Connection connection = ConnectionUtil.getConnection();
+        String sql = "select * from book where id = ?";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1,id);
+           ResultSet resultSet =  preparedStatement.executeQuery();
+           if(resultSet.next()) {
+               BookDTO bookDTO = new BookDTO();
+               bookDTO.setId(resultSet.getInt("id"));
+               bookDTO.setVisible(resultSet.getBoolean("visible"));
+               bookDTO.setPublishedAt(resultSet.getDate("published_at").toLocalDate());
+               bookDTO.setTitle(resultSet.getString("title"));
+               bookDTO.setCreatedAt(resultSet.getTimestamp("created_at").toLocalDateTime());
+               bookDTO.setCategory_id(resultSet.getInt("category_id"));
+               bookDTO.setAvailableDays(resultSet.getInt("available_days"));
+               bookDTO.setAuthor(resultSet.getString("author"));
+               return bookDTO;
+           }
+           return null;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

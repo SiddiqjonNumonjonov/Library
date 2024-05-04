@@ -34,6 +34,8 @@ public class AuthService {
            return;
        }
 
+       ComponentContainer.profileDTO = profileDTO;
+
        if(profileDTO.getRole().equals(ProfileRole.ADMIN)) {
           adminController.start();
        } else if (profileDTO.getRole().equals(ProfileRole.STUDENT)) {

@@ -40,9 +40,21 @@ public class TableRepository {
                 " constraint fk_category_id foreign key(category_id) references category(id)" +
                 ")";
 
+        String sqlForStudentBook = "create table if not exists studentBook(" +
+                "id serial primary key," +
+                "student_id int not null," +
+                "book_id int not null," +
+                "created_at timeStamp not null," +
+                "status varchar(25) not null," +
+                "returned_at timeStamp," +
+                "constraint fk_student_id foreign key(student_id) references profile(id)," +
+                "constraint fk_book_id foreign key(book_id) references book(id)" +
+                ")";
+
            create(sql);
            create(sqlForCategory);
            create(sqlForBook);
+           create(sqlForStudentBook);
     }
 
     public void create(String sql) {

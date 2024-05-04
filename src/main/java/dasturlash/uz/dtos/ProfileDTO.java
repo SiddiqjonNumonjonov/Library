@@ -6,7 +6,7 @@ import dasturlash.uz.enums.ProfileStatus;
 import java.time.LocalDateTime;
 
 public class ProfileDTO {
-    private long id;
+    private int id;
     private String name;
     private String surname;
     private String login;
@@ -16,11 +16,11 @@ public class ProfileDTO {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
